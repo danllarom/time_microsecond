@@ -256,6 +256,11 @@ uint32_t nowMillis() {
   return MillisSecond;
 }
 
+void resetNow(){
+  MicrosSecond=0;
+  MillisSecond=0;
+}
+
 time_t now() {
 	// calculate number of seconds passed since last call to now()
   
