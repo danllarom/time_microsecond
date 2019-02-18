@@ -249,7 +249,7 @@ time_t sysUnsyncedTime = 0; // the time sysTime unadjusted by sync
 #endif
 
 uint32_t nowMicros() {
- return MicrosSecond;
+  return MicrosSecond;
 }
 
 uint32_t nowMillis() {
@@ -263,15 +263,17 @@ void resetNow(){
 
 time_t now() {
 	// calculate number of seconds passed since last call to now()
-  
+    MicrosSecond=(micros() - prevMicros);  
   while ((micros() - prevMicros) >= 1000000) {
 		// micros() and prevMicros are both unsigned ints thus the subtraction will always be the absolute value of the difference
     sysTime++;
-    prevMicros += 1000000;	
+    prevMicros += 1000000;
+    MicrosSecond=(micros() - prevMicros);	
+    
 #ifdef TIME_DRIFT_INFO
     sysUnsyncedTime++; // this can be compared to the synced time to measure long term drift     
 #endif
-    MicrosSecond=(micros() - prevMicros);
+    
   }
 
   MillisSecond = MicrosSecond/1000;
