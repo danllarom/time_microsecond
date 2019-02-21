@@ -19,8 +19,6 @@ void loop() {
   Serial.print("min  ");
   Serial.print(second(time));
   Serial.print("s  ");
-  Serial.print(nowMillis());
-  Serial.print("ms  ");
   Serial.print(nowMicros());
   Serial.print("us  ");
   Serial.print(" ");

@@ -237,7 +237,6 @@ time_t makeTime(const tmElements_t &tm){
 static uint32_t sysTime = 0;
 static uint32_t prevMicros = 0;
 static uint32_t MicrosSecond = 0;
-static uint32_t MillisSecond = 0;
 static uint32_t nextSyncTime = 0;
 static timeStatus_t Status = timeNotSet;
 
@@ -252,13 +251,9 @@ uint32_t nowMicros() {
   return MicrosSecond;
 }
 
-uint32_t nowMillis() {
-  return MillisSecond;
-}
 
 void resetNow(){
   MicrosSecond=0;
-  MillisSecond=0;
 }
 
 time_t now() {
@@ -275,9 +270,6 @@ time_t now() {
 #endif
     
   }
-
-  MillisSecond = MicrosSecond/1000;
-  MicrosSecond = MicrosSecond%1000;
 
   if (nextSyncTime <= sysTime) {
     if (getTimePtr != 0) {

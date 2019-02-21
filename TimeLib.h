@@ -117,7 +117,6 @@ int     month(time_t t);   // the month for the given time
 int     year();            // the full four digit year: (2009, 2010 etc) 
 int     year(time_t t);    // the year for the given time
 uint32_t nowMicros();
-uint32_t nowMillis();
 void resetNow();
 time_t now();              // return the current time as seconds since Jan 1 1970 
 void    setTime(time_t t);
